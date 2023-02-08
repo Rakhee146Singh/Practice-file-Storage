@@ -9,11 +9,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarsController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\StateController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TestEmailController;
 
@@ -211,3 +214,31 @@ use App\Http\Controllers\TestEmailController;
 //     App::setLocale($locale);
 //     return view('json');
 // });
+
+
+Route::controller(CountryController::class)->prefix('country')->group(function () {
+    Route::get('/', 'index');
+    Route::get('create', 'createPage');
+    Route::post('save', 'create');
+    Route::get('edit/{id}', 'edit');
+    Route::put('update/{id}', 'update');
+    Route::get('delete/{id}', 'destroy');
+});
+
+Route::controller(StateController::class)->prefix('state')->group(function () {
+    Route::get('/', 'index');
+    Route::get('create', 'createPage');
+    Route::post('save', 'create');
+    Route::get('edit/{id}', 'edit');
+    Route::put('update/{id}', 'update');
+    Route::get('delete/{id}', 'destroy');
+});
+
+Route::controller(CityController::class)->prefix('city')->group(function () {
+    Route::get('/', 'index');
+    Route::get('create', 'createPage');
+    Route::post('save', 'create');
+    Route::get('edit/{id}', 'edit');
+    Route::put('update/{id}', 'update');
+    Route::get('delete/{id}', 'destroy');
+});
