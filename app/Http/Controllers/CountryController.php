@@ -14,7 +14,7 @@ class CountryController extends Controller
      */
     public function index()
     {
-        $country = Country::all();
+        $country = Country::orderBy('country', 'asc')->get();
         return view('country/list', ['countries' => $country]);
     }
 
@@ -25,6 +25,9 @@ class CountryController extends Controller
      */
     public function create(Request $request)
     {
+        $request->validate([
+            'country' => 'required|alpha|max:30'
+        ]);
         $country = new Country;
         $country->country = $request->country;
         $country->save();
@@ -49,7 +52,7 @@ class CountryController extends Controller
      */
     public function edit($id)
     {
-        $country = Country::find($id);
+        $country = Country::findOrFail($id);
         return view('country/edit', ['countries' => $country]);
     }
 
@@ -62,7 +65,7 @@ class CountryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $country = Country::find($id);
+        $country = Country::findOrFail($id);
         $country->country = $request->country;
         $country->save();
         return redirect('country');

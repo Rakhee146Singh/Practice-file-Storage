@@ -222,7 +222,7 @@ Route::controller(CountryController::class)->prefix('country')->group(function (
     Route::post('save', 'create');
     Route::get('edit/{id}', 'edit');
     Route::put('update/{id}', 'update');
-    Route::get('delete/{id}', 'destroy');
+    Route::delete('delete/{id}', 'destroy');
 });
 
 Route::controller(StateController::class)->prefix('state')->group(function () {
@@ -231,7 +231,7 @@ Route::controller(StateController::class)->prefix('state')->group(function () {
     Route::post('save', 'create');
     Route::get('edit/{id}', 'edit');
     Route::put('update/{id}', 'update');
-    Route::get('delete/{id}', 'destroy');
+    Route::delete('delete/{id}', 'destroy');
 });
 
 Route::controller(CityController::class)->prefix('city')->group(function () {
@@ -240,5 +240,5 @@ Route::controller(CityController::class)->prefix('city')->group(function () {
     Route::post('save', 'create');
     Route::get('edit/{id}', 'edit');
     Route::put('update/{id}', 'update');
-    Route::get('delete/{id}', 'destroy');
+    Route::delete('delete/{id}', 'destroy');
 });
